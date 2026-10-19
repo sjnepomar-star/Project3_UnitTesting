@@ -55,4 +55,8 @@ public class ScoresTest {
     /*
      * getMax() tests
      */
+    @Test
+    public void testGetMax(){
+        //TODO: Add the implementation
+    }
 }
