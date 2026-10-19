@@ -14,6 +14,16 @@ public class ScoresTest {
         assertEquals(test.get(0),5);
 
     }
+
+    @Test
+    public void twoInt(){
+        String twoInt ="5 6";
+        Scores test =new Scores(twoInt);
+        assertEquals(test.getNumScores(),2);
+        assertEquals(test.get(0),5);
+        assertEquals(test.get(1),6);
+
+    }
     /*
      * getMax() tests
      */
