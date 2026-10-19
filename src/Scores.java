@@ -14,7 +14,6 @@ public class Scores {
         // This is a stub; it is not complete.
 		nums = new ArrayList<>();
 
-
         Scanner stringScan = new Scanner(numbers);
         while (stringScan.hasNext()){
             nums.add(Integer.parseInt(stringScan.next()));
