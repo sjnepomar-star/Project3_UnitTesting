@@ -30,7 +30,9 @@ public class Scores {
 	 *	NOTE: You do *NOT* need to test this method! Trivial getters are simple enough that we can just
 	 *	assume they work. (It'd be hard to test them in isolation anyway!)
      */
-    public int getNumScores() { return -1; }
+    public int getNumScores() {
+        return -1;
+    }
 
     /**
      * @param index An integer index in the range [0, getNumScores())
