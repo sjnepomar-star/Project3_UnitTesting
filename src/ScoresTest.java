@@ -24,8 +24,35 @@ public class ScoresTest {
         assertEquals(test.get(1),6);
 
     }
+
+    @Test
+    public void tabDelimited(){
+        String twoInt ="5   6";
+        Scores test =new Scores(twoInt);
+        assertEquals(test.getNumScores(),2);
+        assertEquals(test.get(0),5);
+        assertEquals(test.get(1),6);
+    }
+
+    @Test
+    public void zeroInts(){
+        Scores test =new Scores("");
+        assertEquals(test.getNumScores(),0);
+    }
+
+    @Test
+    public void newLineDelimited(){
+        String twoInt ="5\n6";
+        Scores test =new Scores(twoInt);
+        assertEquals(test.getNumScores(),2);
+        assertEquals(test.get(0),5);
+        assertEquals(test.get(1),6);
+    }
+
+
+
+
     /*
      * getMax() tests
      */
-
 }
