@@ -1,4 +1,7 @@
 import org.junit.jupiter.api.Test;
+
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -47,6 +50,16 @@ public class ScoresTest {
         assertEquals(test.getNumScores(),2);
         assertEquals(test.get(0),5);
         assertEquals(test.get(1),6);
+    }
+
+    @Test
+    public void nonIntString(){
+        String noInts ="HEllo Hi! Mooo";
+        //Scores test =new Scores(noInts);
+
+        assertThrows(IllegalArgumentException.class,() -> {
+                    Scores test =new Scores(noInts);});
+
     }
 
 

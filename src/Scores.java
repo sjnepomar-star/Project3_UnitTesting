@@ -16,9 +16,15 @@ public class Scores {
         nums = new ArrayList<>();
 
         Scanner stringScan = new Scanner(numbers);
-        while (stringScan.hasNext()){
-            nums.add(Integer.parseInt(stringScan.next()));
+        try{
+            while (stringScan.hasNext()){
+                nums.add(Integer.parseInt(stringScan.next()));
+            }
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("not an delemeted ints");
         }
+
+        
 
     }
 
