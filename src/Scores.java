@@ -24,7 +24,6 @@ public class Scores {
 
     /**
      * @return the number of scores in this object i.e. the number of integers in the String given to the constructor
-     *
      *	NOTE: You do *NOT* need to test this method! Trivial getters are simple enough that we can just
      *	assume they work. (It'd be hard to test them in isolation anyway!)
      */
