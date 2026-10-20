@@ -119,4 +119,20 @@ public class ScoresTest {
         assertThrows(NoSuchElementException.class, test::
                 getMax);
     }
+
+    @Test
+    public void firstIsMax(){
+        int firstElement = 4;
+        String elements =  firstElement + "2 3 2 1 2 3";
+        Scores test1 = new Scores(elements);
+
+        assertEquals(firstElement, test1.getMax());
+
+
+        firstElement = 986;
+        elements = firstElement + "764 34 7 254 865 933 143 985";
+        Scores test2 = new Scores(elements);
+
+        assertEquals(firstElement, test2.getMax());
+    }
 }
