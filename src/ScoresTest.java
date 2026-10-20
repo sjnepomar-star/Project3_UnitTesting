@@ -83,6 +83,27 @@ public class ScoresTest {
             Scores test =new Scores(nullString);});
     }
 
+    @Test
+    public void stringsAndInts(){
+        String mix ="5 moo 6 MooButLouder 9 10  5 eee\n9";
+        assertThrows(IllegalArgumentException.class,() -> {
+            Scores test =new Scores(mix);});
+    }
+
+    @Test
+    public void floats(){
+        String floats="9.5 11.1 6.7\n67.67 9.09";
+        assertThrows(IllegalArgumentException.class,() -> {
+            Scores test =new Scores(floats);});
+    }
+
+    @Test
+    public void floatsAndInts(){
+        String mix ="9 0.6  5\n9.999 8";
+        assertThrows(IllegalArgumentException.class,() -> {
+            Scores test =new Scores(mix);});
+    }
+
 
 
 
