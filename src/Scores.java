@@ -45,11 +45,15 @@ public class Scores {
      */
     public int getMax() throws NoSuchElementException {
         int max = -1;
-        for(int score : nums) {
-            if (score > max) {
-                max = score;
+        try {
+            for (int score : nums) {
+                if (score > max) {
+                    max = score;
+                }
+                return max;
             }
-            return max;
+        } catch (NoSuchElementException e){
+            throw new NoSuchElementException();
         }
         return -1;
     }
