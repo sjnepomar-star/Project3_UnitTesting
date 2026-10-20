@@ -56,7 +56,9 @@ public class ScoresTest {
      * getMax() tests
      */
     @Test
-    public void testGetMax(){
-        //TODO: Add the implementation
+    public void improperReturn(){
+        String noInt = " ";
+        Scores test = new Scores(noInt);
+        assertEquals(test.getMax(), -1);
     }
 }
