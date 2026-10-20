@@ -15,6 +15,10 @@ public class Scores {
         // This is a stub; it is not complete.
         nums = new ArrayList<>();
 
+        if(numbers==null){
+            throw new IllegalArgumentException("Cannot use null");
+        }
+
         Scanner stringScan = new Scanner(numbers);
         try{
             while (stringScan.hasNext()){

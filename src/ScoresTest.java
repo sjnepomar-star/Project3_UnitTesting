@@ -13,8 +13,8 @@ public class ScoresTest {
     public void oneInt(){
         String oneInt ="5";
         Scores test =new Scores(oneInt);
-        assertEquals(test.getNumScores(),1);
-        assertEquals(test.get(0),5);
+        assertEquals(1,test.getNumScores());
+        assertEquals(5,test.get(0));
 
     }
 
@@ -22,9 +22,9 @@ public class ScoresTest {
     public void twoInt(){
         String twoInt ="5 6";
         Scores test =new Scores(twoInt);
-        assertEquals(test.getNumScores(),2);
-        assertEquals(test.get(0),5);
-        assertEquals(test.get(1),6);
+        assertEquals(2,test.getNumScores());
+        assertEquals(5,test.get(0));
+        assertEquals(6,test.get(1));
 
     }
 
@@ -40,7 +40,7 @@ public class ScoresTest {
     @Test
     public void zeroInts(){
         Scores test =new Scores("");
-        assertEquals(test.getNumScores(),0);
+        assertEquals(0,test.getNumScores());
     }
 
     @Test
@@ -48,8 +48,21 @@ public class ScoresTest {
         String twoInt ="5\n6";
         Scores test =new Scores(twoInt);
         assertEquals(test.getNumScores(),2);
-        assertEquals(test.get(0),5);
-        assertEquals(test.get(1),6);
+        assertEquals(5,test.get(0));
+        assertEquals(6,test.get(1));
+    }
+
+    @Test
+    public void spaceNewlineTabDelimited(){
+        String fourInt ="5 7   8\n9";
+        Scores test =new Scores(fourInt);
+        assertEquals(4,test.getNumScores());
+        assertEquals(5,test.get(0));
+        assertEquals(7,test.get(1));
+        assertEquals(8,test.get(2));
+        assertEquals(9,test.get(3));
+
+
     }
 
     @Test
@@ -61,6 +74,19 @@ public class ScoresTest {
                     Scores test =new Scores(noInts);});
 
     }
+
+
+    @Test
+    public void nullString(){
+        String nullString =null;
+        assertThrows(IllegalArgumentException.class,() -> {
+            Scores test =new Scores(nullString);});
+    }
+
+
+
+
+
 
 
 
