@@ -87,17 +87,15 @@ public class ScoresTest {
 
 
 
-
-
-
-
     /*
      * getMax() tests
      */
     @Test
-    public void improperReturn(){
-        String noInt = " ";
-        Scores test = new Scores(noInt);
-        assertEquals(test.getMax(), -1);
+    public void exceptionThrown(){
+        String noElement = " ";
+        Scores test = new Scores(noElement);
+
+        assertThrows(NoSuchElementException.class, test::
+                getMax);
     }
 }

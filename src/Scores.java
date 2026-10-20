@@ -25,7 +25,7 @@ public class Scores {
                 nums.add(Integer.parseInt(stringScan.next()));
             }
         }catch (IllegalArgumentException e){
-            throw new IllegalArgumentException("not an delemeted ints");
+            throw new IllegalArgumentException("not an delimited ints");
         }
 
         
@@ -59,11 +59,10 @@ public class Scores {
                 if (score > max) {
                     max = score;
                 }
-                return max;
             }
         } catch (NoSuchElementException e){
             throw new NoSuchElementException();
         }
-        return -1;
+        return max;
     }
 }
