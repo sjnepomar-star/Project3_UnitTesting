@@ -143,13 +143,14 @@ public class ScoresTest {
      * getMax() tests
      **/
     @Test
-    public void exceptionThrown(){
+    public void noElementsTest(){
         String noElement = " ";
-        assertThrows(NoSuchElementException.class, () -> new Scores(noElement));
+        Scores test = new Scores(noElement);
+        assertThrows(NoSuchElementException.class, test::getMax);
     }
 
     @Test
-    public void firstIsMax(){
+    public void firstIsMaxAndNotIn(){
         int firstElement = 4;
         String elements =  "4 2 3 2 1 2 3";
         Scores test1 = new Scores(elements);
@@ -165,7 +166,7 @@ public class ScoresTest {
     }
 
     @Test
-    public void lastIsMax(){
+    public void lastIsMaxAndNotIn(){
         int lastElement = 7;
         String elements = "2 3 2 1 2 3 7";
         Scores test1 = new Scores(elements);
@@ -180,5 +181,11 @@ public class ScoresTest {
         assertEquals(lastElement, test2.getMax());
     }
 
+    @Test
+    public void allElements(){
+        String elements = "6 2 7 1 5 3 8 4";
+        Scores test = new Scores(elements);
 
+        assertEquals(8, test.getMax());
+    }
 }

@@ -53,16 +53,16 @@ public class Scores {
      * @throws java.util.NoSuchElementException if there are no scores
      */
     public int getMax() throws NoSuchElementException {
-        int max = -1;
-        try {
+        int max = 0;
+        if (!nums.isEmpty()){
             for (int score : nums) {
                 if (score > max) {
                     max = score;
                 }
             }
-        } catch (NoSuchElementException e){
+            return max;
+        } else {
             throw new NoSuchElementException();
         }
-        return max;
     }
 }
