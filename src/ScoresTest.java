@@ -29,6 +29,18 @@ public class ScoresTest {
     }
 
     @Test
+    public void manyInt(){
+        String manyInts ="";
+        for(int i=0;i<100;i++){
+            Integer num =i;
+            manyInts = manyInts.concat(num.toString());
+            manyInts =manyInts.concat(" ");
+        }
+        Scores test =new Scores(manyInts);
+        assertEquals(100,test.getNumScores());
+    }
+
+    @Test
     public void tabDelimited(){
         String twoInt ="5   6";
         Scores test =new Scores(twoInt);
@@ -63,6 +75,18 @@ public class ScoresTest {
         assertEquals(9,test.get(3));
 
 
+    }
+
+    @Test
+    public void positiveandNegitiveInts(){
+        String positiveAndNegitive =("-5 4 -6   9 0");
+        Scores test =new Scores(positiveAndNegitive);
+        assertEquals(5,test.getNumScores());
+        assertEquals(-5,test.get(0));
+        assertEquals(4,test.get(1));
+        assertEquals(-6,test.get(2));
+        assertEquals(9,test.get(3));
+        assertEquals(0,test.get(4));
     }
 
     @Test
@@ -102,6 +126,13 @@ public class ScoresTest {
         String mix ="9 0.6  5\n9.999 8";
         assertThrows(IllegalArgumentException.class,() -> {
             Scores test =new Scores(mix);});
+    }
+
+    @Test
+    public void csvList(){
+        String csv ="5,6,7,8,9,10";
+        assertThrows(IllegalArgumentException.class,() -> {
+            Scores test =new Scores(csv);});
     }
 
 
