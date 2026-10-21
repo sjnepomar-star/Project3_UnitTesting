@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ScoresTest {
-    /*
+    /**
      * Constructor tests using numScores() and get()
-     */
+     **/
     @Test
     public void oneInt(){
         String oneInt ="5";
@@ -36,14 +36,14 @@ public class ScoresTest {
             manyInts = manyInts.concat(num.toString());
             manyInts =manyInts.concat(" ");
         }
-        Scores test =new Scores(manyInts);
+        Scores test = new Scores(manyInts);
         assertEquals(100,test.getNumScores());
     }
 
     @Test
     public void tabDelimited(){
         String twoInt ="5   6";
-        Scores test =new Scores(twoInt);
+        Scores test = new Scores(twoInt);
         assertEquals(test.getNumScores(),2);
         assertEquals(test.get(0),5);
         assertEquals(test.get(1),6);
@@ -51,14 +51,14 @@ public class ScoresTest {
 
     @Test
     public void zeroInts(){
-        Scores test =new Scores("");
+        Scores test = new Scores("");
         assertEquals(0,test.getNumScores());
     }
 
     @Test
     public void newLineDelimited(){
         String twoInt ="5\n6";
-        Scores test =new Scores(twoInt);
+        Scores test = new Scores(twoInt);
         assertEquals(test.getNumScores(),2);
         assertEquals(5,test.get(0));
         assertEquals(6,test.get(1));
@@ -66,7 +66,7 @@ public class ScoresTest {
 
     @Test
     public void spaceNewlineTabDelimited(){
-        String fourInt ="5 7   8\n9";
+        String fourInt = "5 7   8\n9";
         Scores test =new Scores(fourInt);
         assertEquals(4,test.getNumScores());
         assertEquals(5,test.get(0));
@@ -79,7 +79,7 @@ public class ScoresTest {
 
     @Test
     public void positiveandNegitiveInts(){
-        String positiveAndNegitive =("-5 4 -6   9 0");
+        String positiveAndNegitive = ("-5 4 -6   9 0");
         Scores test =new Scores(positiveAndNegitive);
         assertEquals(5,test.getNumScores());
         assertEquals(-5,test.get(0));
@@ -91,11 +91,11 @@ public class ScoresTest {
 
     @Test
     public void nonIntString(){
-        String noInts ="HEllo Hi! Mooo";
+        String noInts = "HEllo Hi! Mooo";
         //Scores test =new Scores(noInts);
 
         assertThrows(IllegalArgumentException.class,() -> {
-                    Scores test =new Scores(noInts);});
+                    Scores test = new Scores(noInts);});
 
     }
 
@@ -104,66 +104,81 @@ public class ScoresTest {
     public void nullString(){
         String nullString =null;
         assertThrows(IllegalArgumentException.class,() -> {
-            Scores test =new Scores(nullString);});
+            Scores test = new Scores(nullString);});
     }
 
     @Test
     public void stringsAndInts(){
-        String mix ="5 moo 6 MooButLouder 9 10  5 eee\n9";
+        String mix = "5 moo 6 MooButLouder 9 10  5 eee\n9";
         assertThrows(IllegalArgumentException.class,() -> {
-            Scores test =new Scores(mix);});
+            Scores test = new Scores(mix);});
     }
 
     @Test
     public void floats(){
-        String floats="9.5 11.1 6.7\n67.67 9.09";
+        String floats = "9.5 11.1 6.7\n67.67 9.09";
         assertThrows(IllegalArgumentException.class,() -> {
-            Scores test =new Scores(floats);});
+            Scores test = new Scores(floats);});
     }
 
     @Test
     public void floatsAndInts(){
-        String mix ="9 0.6  5\n9.999 8";
+        String mix = "9 0.6  5\n9.999 8";
         assertThrows(IllegalArgumentException.class,() -> {
-            Scores test =new Scores(mix);});
+            Scores test = new Scores(mix);});
     }
 
     @Test
     public void csvList(){
-        String csv ="5,6,7,8,9,10";
+        String csv = "5,6,7,8,9,10";
         assertThrows(IllegalArgumentException.class,() -> {
-            Scores test =new Scores(csv);});
+            Scores test = new Scores(csv);});
     }
 
 
 
 
 
-    /*
+    /**
      * getMax() tests
-     */
+     **/
     @Test
     public void exceptionThrown(){
         String noElement = " ";
-        Scores test = new Scores(noElement);
-
-        assertThrows(NoSuchElementException.class, test::
-                getMax);
+        assertThrows(NoSuchElementException.class, () -> new Scores(noElement));
     }
 
     @Test
     public void firstIsMax(){
         int firstElement = 4;
-        String elements =  firstElement + "2 3 2 1 2 3";
+        String elements =  "4 2 3 2 1 2 3";
         Scores test1 = new Scores(elements);
 
         assertEquals(firstElement, test1.getMax());
 
 
         firstElement = 986;
-        elements = firstElement + "764 34 7 254 865 933 143 985";
+        elements = "986 764 34 7 254 865 933 143 985";
         Scores test2 = new Scores(elements);
 
         assertEquals(firstElement, test2.getMax());
     }
+
+    @Test
+    public void lastIsMax(){
+        int lastElement = 7;
+        String elements = "2 3 2 1 2 3 7";
+        Scores test1 = new Scores(elements);
+
+        assertEquals(lastElement, test1.getMax());
+
+
+        lastElement = 986;
+        elements = "764 34 7 254 865 933 143 986";
+        Scores test2 = new Scores(elements);
+
+        assertEquals(lastElement, test2.getMax());
+    }
+
+
 }
